@@ -1,4 +1,5 @@
 using GalaSoft.MvvmLight;
+using MoveData.Model;
 
 namespace MoveData.ViewModel
 {
@@ -19,6 +20,42 @@ namespace MoveData.ViewModel
         /// <summary>
         /// Initializes a new instance of the MainViewModel class.
         /// </summary>
+        /// 
+        private BackupDirectorys backupDirectory;
+        public BackupDirectorys BackupDirectory
+        {
+            get
+            {
+                if(backupDirectory == null)
+                {
+                    backupDirectory = new BackupDirectorys();
+                }
+
+                return backupDirectory;
+            }
+
+            set
+            {
+                backupDirectory = value;
+            }
+        }
+        private string defaultDestination;
+        public string DefaultDestination
+        {
+            get
+            {
+                if(defaultDestination == string.Empty)
+                {
+                    defaultDestination = @"C:\";
+                }
+
+                return defaultDestination;
+            }
+            set
+            {
+                defaultDestination = value;
+            }
+        }
         public MainViewModel()
         {
             ////if (IsInDesignMode)
@@ -29,6 +66,11 @@ namespace MoveData.ViewModel
             ////{
             ////    // Code runs "for real"
             ////}
+            ///
+            backupDirectory = new BackupDirectorys();
+            backupDirectory.Desktop = @"c:\";
+
+            DefaultDestination = @"c:\";
         }
     }
 }
